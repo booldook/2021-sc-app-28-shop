@@ -1,5 +1,5 @@
 /************* global require *************/
-require('dotenv').config();
+require('./modules/dotenv')();
 const express = require('express');
 const app = express();
 const path = require('path');
