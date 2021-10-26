@@ -1,5 +1,5 @@
 /************* global require *************/
-require('./modules/dotenv')();
+require('./modules/dotenv-init')();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -10,7 +10,7 @@ const method = require('./middlewares/method-mw');
 const logger = require('./middlewares/morgan-mw');
 // const session = require('./middlewares/session-mw');
 const locals = require('./middlewares/locals-mw');
-const { sequelize } = require('./models');
+// const { sequelize } = require('./models');
 
 /*************** sequelize init **************/
 // require('./modules/sequelize-init')(sequelize);
