@@ -94,4 +94,13 @@ a:not(.btn) {
       margin: 0.25em;
     }
   }
+  .navi-wrap {
+    @include flex($h: center);
+    border-bottom: 1px solid $secondary-color;
+    .navi {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 }
