@@ -1,0 +1,10 @@
+@import '../common';
+
+.login-wrapper {
+  height: 100vh;
+  @include flex($h: center, $v: center);
+  .login-wrap {
+    padding: 1.5em;
+    border: 2px solid;
+  }
+}
