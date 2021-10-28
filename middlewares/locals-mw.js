@@ -3,6 +3,7 @@ module.exports = (req, res, next) => {
   res.locals.user = req.user || null
   res.locals.links = linkInit.admin
   res.locals.currentPath = req.originalUrl
+  console.log(req.originalUrl)
   const currentPaths = req.originalUrl.split('/')
   currentPaths.shift()
   res.locals.currentPaths = currentPaths
