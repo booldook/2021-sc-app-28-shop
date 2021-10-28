@@ -9,7 +9,7 @@ module.exports = {
         src: 'b1',
       },
       {
-        path: ['/admin/prd', 'admin/cate'],
+        path: ['/admin/prd', '/admin/cate'],
         link: '/admin/prd',
         src: 'b2',
       },
