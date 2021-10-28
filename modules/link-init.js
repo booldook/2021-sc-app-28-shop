@@ -23,11 +23,11 @@ module.exports = {
         link: '/admin/binit',
         src: 'b4',
       },
-      {
+      /* {
         path: '/admin/system',
         link: '/admin/system',
         src: 'b6',
-      },
+      }, */
       {
         path: '//analytics.google.com',
         link: '/admin/analytics',
