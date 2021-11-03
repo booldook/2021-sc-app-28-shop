@@ -5,9 +5,12 @@ const { alert } = require('../../modules/util');
 const { BoardInit } = require('../../models');
 
 router.get('/', async (req, res, next) => {
-  const boards = await BoardInit.findAll({ order: [['title', 'asc']] });
-  const ejs = { boards };
-  res.render('admin/binit/board-init', ejs);
+  try {
+    const boards = await BoardInit.findAll({ order: [['title', 'asc']] });
+    res.render('admin/binit/board-init', { boards });
+  } catch (err) {
+    next(createError(err));
+  }
 });
 
 router.post('/', async (req, res, next) => {
