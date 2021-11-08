@@ -21,5 +21,3 @@ FROM boardcounter;
 
 
 
-
-
