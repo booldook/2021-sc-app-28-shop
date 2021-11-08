@@ -26,18 +26,16 @@
         <tr>
           <td>이미지 첨부</td>
           <td>
-            <% for(let i=0; i<useImg; i++) { %>
-            <div class="file-wrap">
-              <% 
-                if(list.files[i] && list.files[i].type === 'I') { 
-                  let { thumbSrc, name, id, type } = list.files[i];
-              %>
-              <img src="<%= thumbSrc %>" alt="<%= name %>" class="img">
-              <div class="file"><%= name %></div>
-              <button type="button" class="btn btn-sm btn-danger" data-idx="<%= id %>">삭제</button>
-              <% } %>
-            </div>
-            <input type="file" name="img" class="form-control-file mb-2">
+            <% for(let i=0; i<useImg; i++) { %> 
+              <div class="file-wrap">
+                <% if(list.files[i] && list.files[i].type === 'I') { %>
+                <% let { thumbSrc, name, id, type } = list.files[i]; %>
+                  <img src="<%= thumbSrc %>" alt="<%= name %>" class="img">
+                  <div class="file"><%= name %></div>
+                  <button type="button" class="btn btn-sm btn-danger" data-idx="<%= id %>" onclick="onDeleteFile('<%= id %>')">삭제</button>
+                <% } %>
+							</div>
+              <input type="file" name="img" class="form-control-file mb-2">
             <% } %>
           </td>
         </tr>
@@ -46,12 +44,10 @@
           <td>
             <% for(let i=0; i<useFile; i++) { %>
             <div class="file-wrap">
-              <% 
-              if(list.files[i] && list.files[i].type === 'F') { 
-                let { name, id, type } = list.files[i];
-              %>
+              <% if(list.files[i] && list.files[i].type === 'F') { %>
+              <% let { name, id, type } = list.files[i]; %>
               <div class="file"><%= name %></div>
-              <button type="button" class="btn btn-sm btn-danger" data-idx="<%= id %>">삭제</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick="onDeleteFile('<%= id %>')">삭제</button>
               <% } %>
             </div>
             <input type="file" name="pds" class="form-control-file mb-2">
