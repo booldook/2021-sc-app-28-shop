@@ -35,6 +35,15 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     });
+    BoardComment.belongsTo(models.User, {
+      foreignKey: {
+        name: 'user_id',
+        allowNull: false,
+      },
+      sourceKey: 'id',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+    });
   };
 
   return BoardComment;
