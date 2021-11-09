@@ -1,3 +1,5 @@
+const { dateFormat } = require('../modules/util');
+
 module.exports = (sequelize, DataTypes) => {
   const BoardComment = sequelize.define(
     'BoardComment',
@@ -15,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       comment: {
         type: DataTypes.STRING(255),
         allowNull: false,
+      },
+      regDate: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return dateFormat(this.getDataValue('createdAt'), 'H');
+        },
       },
     },
     {
