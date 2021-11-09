@@ -17,7 +17,7 @@ SELECT
 	COUNT(DISTINCT(board_id))
 FROM boardcounter;
 
-
+SELECT * from boardfile ORDER BY id DESC; 
 
 
 
