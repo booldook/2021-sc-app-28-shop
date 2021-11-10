@@ -2,7 +2,6 @@
 .env.pro
 storages
 storages-remove
-*.css
 
 # Logs
 logs
