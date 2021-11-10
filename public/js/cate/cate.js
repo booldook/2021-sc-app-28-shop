@@ -18,7 +18,7 @@ core.data = {
 };
 
 function onChangedTree(e, data) {
-  var json = $('#jstreeWrap').jstree(true).get_json('#');
+  /* var json = $('#jstreeWrap').jstree(true).get_json('#');
   axios
     .post('/api/tree', { json })
     .then(function (r) {
@@ -26,7 +26,11 @@ function onChangedTree(e, data) {
     })
     .catch(function (err) {
       console.log(err);
-    });
+    }); */
+}
+
+function onCreateTree(e, data) {
+  console.log(data);
 }
 
 function onUpdateTree() {
@@ -44,7 +48,7 @@ function onUpdateTree() {
 
 $('#jstreeWrap')
   .jstree({ core: core, plugins: plugins })
-  // .on('changed.jstree', onChangedTree)
+  .on('create_node.jstree', onCreateTree)
   .on('rename_node.jstree', onUpdateTree)
   .on('move_node.jstree', onUpdateTree)
   .on('delete_node.jstree', onUpdateTree);
