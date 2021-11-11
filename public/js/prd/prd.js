@@ -1,6 +1,6 @@
 // jsTree
 var core = {};
-var plugins = ['state', 'wholerow', 'changed', 'checkbox'];
+var plugins = ['wholerow', 'changed', 'checkbox'];
 
 core.themes = {
   variant: 'large',
