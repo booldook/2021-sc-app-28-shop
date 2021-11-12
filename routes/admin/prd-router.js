@@ -22,8 +22,8 @@ router.get('/', queries(), async (req, res, next) => {
       req.query,
       ProductFile
     );
-    res.json({ lists, pager, totalRecord });
-    // res.render('admin/prd/prd-list', { lists, pager, totalRecord });
+    // res.json({ lists, pager, totalRecord });
+    res.render('admin/prd/prd-list', { lists, pager, totalRecord });
   } catch (err) {
     next(createError(err));
   }
