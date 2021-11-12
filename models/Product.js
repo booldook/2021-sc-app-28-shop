@@ -81,7 +81,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
 
   Product.getCount = async function (query) {
     return await this.count({
-      where: query.search ? sequelize.getWhere(query) : null,
+      where: sequelize.getWhere(query),
     });
   };
 
@@ -137,7 +137,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
       order: [[field, sort]],
       offset: pager.startIdx,
       limit: pager.listCnt,
-      where: search ? sequelize.getWhere(query) : null,
+      where: sequelize.getWhere(query),
       include: [{ model: ProductFile, attributes: ['saveName'] }],
     });
     const lists = this.getViewData(rs);
