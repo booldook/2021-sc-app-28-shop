@@ -27,12 +27,15 @@ $('#jstreeWrap')
 
 function onLoadedTree(e, data) {
   allData = data.instance._model.data;
+  console.log(allData);
 }
 
 function onChangeTree(e, data) {
   const selectedTree = [];
   for (var v of data.selected) {
-    if (!allData[v].children.length) selectedTree.push(v);
+    if (!allData[v].children.length) {
+      selectedTree.push(v);
+    }
   }
   selData = selectedTree;
 }
@@ -41,8 +44,14 @@ $('.prd-wrapper .bt-modal-close').click(onCloseModal);
 function onCloseModal() {
   $('.prd-wrapper .modal-wrapper').hide();
   var html = '';
+  var title = '';
   for (var v of selData) {
-    html += '<div class="data">' + allData[v].text + '</div>';
+    title = '';
+    for (let i = 0; i < allData[v].parents.length - 2; i++) {
+      title += allData[allData[v].parents[i]].text + '/';
+    }
+    title += allData[v].text;
+    html += '<div class="tree-data">' + title + '</div>';
   }
   $('.prd-wrapper .selected-tree').html(html);
 }
