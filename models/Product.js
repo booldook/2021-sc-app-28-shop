@@ -139,16 +139,18 @@ module.exports = (sequelize, { DataTypes, Op }) => {
     const pager = createPager(page, totalRecord, listCnt, pagerCnt);
 
     const rs = await this.findAll({
-      order: [[field, sort]],
       offset: pager.startIdx,
       limit: pager.listCnt,
       where: sequelize.getWhere(query),
       include: [
         {
           model: ProductFile,
-          attributes: ['saveName', 'fileType'],
-          order: [['id', 'asc']],
+          attributes: ['id', 'saveName', 'fileType'],
         },
+      ],
+      order: [
+        [field, sort],
+        [ProductFile, 'id', 'ASC'],
       ],
     });
     const lists = this.getViewData(rs);
