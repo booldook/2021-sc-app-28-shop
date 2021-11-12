@@ -109,18 +109,21 @@ module.exports = (sequelize, { DataTypes, Op }) => {
             }
           }
         } else {
+          // list
           if (v.ProductFiles.length) {
             for (let file of v.ProductFiles) {
               if (file.fileType === 'I') {
                 v.img = {
                   thumbSrc: relPath(file.saveName),
-                  name: file.oriName,
-                  id: file.id,
-                  type: file.fileType,
                 };
                 break;
               }
             }
+          }
+          if (!v.img) {
+            v.img = {
+              thumbSrc: 'https://via.placeholder.com/120',
+            };
           }
         }
         delete v.createdAt;
