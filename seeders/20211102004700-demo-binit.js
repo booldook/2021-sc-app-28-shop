@@ -3,7 +3,7 @@ module.exports = {
     const insertBinit = [];
     insertBinit.push({
       title: '공지사항',
-      boardType: 'dafulat',
+      boardType: 'default',
       useImg: '3',
       useFile: '2',
       useComment: '0',
