@@ -160,6 +160,17 @@ function findLastId(_obj, arr) {
   return arr;
 }
 
+// _obj의 자식들의 id를 리턴하는 재귀함수
+function findAllId(_obj, arr) {
+  if (_obj.children) {
+    for (let v of _obj.children) {
+      findAllId(v, arr);
+    }
+  }
+  arr.push(_obj.id);
+  return arr;
+}
+
 module.exports = {
   location,
   cutTail,
@@ -177,5 +188,6 @@ module.exports = {
   dateFormat,
   findLastId,
   findChildId,
+  findAllId,
   findObj,
 };
