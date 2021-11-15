@@ -19,6 +19,7 @@ module.exports = {
         priceSale: Math.floor(Math.random() * 300000) + 30000,
         summary: posts[i].title,
         content: posts[i].body,
+        amount: i % 20 === 0 ? 0 : Math.floor(Math.random() * 1000),
         createdAt: new Date(),
         updatedAt: new Date(),
       });
@@ -27,6 +28,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('cate', null, {});
+    await queryInterface.bulkDelete('product', null, {});
   },
 };
