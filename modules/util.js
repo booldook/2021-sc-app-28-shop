@@ -57,11 +57,7 @@ const absPath = (file) =>
 const moveFile = async (file) => {
   try {
     const isExist = await fs.pathExists(
-      __dirname,
-      '../storages/',
-      file.substr(0, 6),
-      './thumb',
-      file
+      path.join(__dirname, '../storages/', file.substr(0, 6), './thumb', file)
     );
     let savePath = path.join(__dirname, '../storages-remove', file.split('_')[0]);
     let oldPath = absPath(file);
