@@ -82,16 +82,21 @@
         <tr>
           <td>이미지 첨부</td>
           <td>
-            <% for(let i=0; i<5; i++) { %> 
-              <% let { thumbSrc, name, id, type, fieldNum } = prd.imgs[i]; %>
-              <% if(prd.imgs[i] && fieldNum == (i + 1)) { %>
+            <% for(let i=1; i<=5; i++) { %> 
+              <% let idx = _.findIndex(prd.imgs, v => v.fieldNum == i && v.type == 'I') %>
+              <% if(idx > -1) { %>
+                <% let { thumbSrc, name, id, type, fieldNum } = prd.imgs[idx]; %>
                   <div class="file-wrap">
                     <img src="<%= thumbSrc %>" alt="<%= name %>" class="img">
                     <div class="file"><%= name %></div>
-                    <button type="button" data-name="img<%= (i+1) %>" class="btn btn-sm btn-danger" data-idx="<%= id %>" onclick="onDeleteFile('<%= id %>', this)">삭제</button>
+                    <button type="button" data-name="img_<%= i %>" class="btn btn-sm btn-danger" data-idx="<%= id %>" onclick="onDeleteFile('<%= id %>', this)">삭제</button>
                   </div>
               <% } else { %>
-                <input type="file" name="img<%= (i+1) %>" class="form-control-file mb-2">
+                <input type="file" name="img_<%= i %>" class="form-control-file mb-2">
+              <% } %>
+              <% if (i === 1) { %>
+                <div class="red">상품리스트에 노출되는 대표 이미지 입니다. 필수로 넣어주세요.</div>
+                <hr>
               <% } %>
             <% } %>
           </td>
@@ -99,16 +104,17 @@
         <tr>
           <td>상세내용 첨부</td>
           <td>
-            <% for(let i=0; i<2; i++) { %> 
-              <% let { thumbSrc, name, id, type, fieldNum } = prd.details[i]; %>
-              <% if(fieldNum == (i + 1)) { %>
+            <% for(let i=1; i<=2; i++) { %> 
+              <% let idx = _.findIndex(prd.details, v => v.fieldNum == i && v.type == 'F') %>
+              <% if(idx > -1) { %>
+                <% let { thumbSrc, name, id, type, fieldNum } = prd.details[idx]; %>
                   <div class="file-wrap">
                     <img src="<%= thumbSrc %>" alt="<%= name %>" class="img">
                     <div class="file"><%= name %></div>
-                    <button type="button" data-name="detail<%= (i+1) %>" class="btn btn-sm btn-danger" data-idx="<%= id %>" onclick="onDeleteFile('<%= id %>', this)">삭제</button>
+                    <button type="button" data-name="detail_<%= i %>" class="btn btn-sm btn-danger" data-idx="<%= id %>" onclick="onDeleteFile('<%= id %>', this)">삭제</button>
                   </div>
               <% } else { %>
-                <input type="file" name="detail<%= (i+1) %>" class="form-control-file mb-2">
+                <input type="file" name="detail_<%= i %>" class="form-control-file mb-2">
               <% } %>
             <% } %>
           </td>
