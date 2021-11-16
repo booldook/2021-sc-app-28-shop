@@ -31,3 +31,12 @@ LEFT OUTER JOIN `productfile` AS `ProductFiles`
 ON `Product`.`id` = `ProductFiles`.`prd_id` 
 AND (`ProductFiles`.`deletedAt` IS NULL) 
 ORDER BY `Product`.`id` DESC, `ProductFiles`.`id` ASC;
+
+
+
+SELECT `Product`.*, `ProductFiles`.`id` AS `ProductFiles.id`, `ProductFiles`.`saveName` AS `ProductFiles.saveName`, `ProductFiles`.`fileType` AS `ProductFiles.fileType`, `ProductFiles`.`fieldNum` AS `ProductFiles.fieldNum` FROM (SELECT `Product`.`id`, `Product`.`title`, `Product`.`priceOrigin`, `Product`.`priceSale`, `Product`.`amount`, `Product`.`status`, `Product`.`summary`, `Product`.`content`, `Product`.`readCounter`, `Product`.`createdAt`, `Product`.`updatedAt`, `Product`.`deletedAt` FROM `product` AS `Product` WHERE `Product`.`deletedAt` IS NULL ORDER BY 
+`Product`.`id` DESC LIMIT 0, 10) AS `Product` LEFT OUTER JOIN `productfile` AS `ProductFiles` ON `Product`.`id` = `ProductFiles`.`prd_id` AND (`ProductFiles`.`deletedAt` IS NULL) ORDER BY `Product`.`id` DESC, `ProductFiles`.`fileType` ASC, `ProductFiles`.`fieldNum` ASC;
+
+
+
+
