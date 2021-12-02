@@ -15,7 +15,7 @@ router.get(
   boardInit(),
   async (req, res, next) => {
     try {
-      const { lists, pager } = await Board.getList('241', null, BoardFile);
+      const { lists, pager } = await Board.getList(req.query.id, null, BoardFile);
       console.log('======');
       console.log(lists[0]);
       res.status(200).json({ list: lists[0] });
