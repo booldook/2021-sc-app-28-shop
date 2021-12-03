@@ -16,9 +16,9 @@ router.get(
   async (req, res, next) => {
     try {
       const { lists, pager } = await Board.getList(req.query.id, null, BoardFile);
-      console.log('======');
-      console.log(lists[0]);
-      res.status(200).json({ list: lists[0] });
+      const list = { content: lists[0].content };
+      list.files = lists[0].BoardFiles.map((v) => v.saveName);
+      res.status(200).json(list);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
