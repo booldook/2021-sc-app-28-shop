@@ -62,7 +62,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
       const [allTree] = await this.getAllCate();
       const myTree = findObj(allTree, cid);
       const lastTree = findLastId(myTree, []);
-      const rs = await this.findAll({
+      /* const rs = await this.findAll({
         where: { id: { [Op.or]: [...lastTree] } },
         attributes: ['id'],
         include: [
@@ -90,6 +90,36 @@ module.exports = (sequelize, { DataTypes, Op }) => {
                   [ProductFile, 'fieldNum', 'ASC'],
                 ],
               },
+            ],
+          },
+        ],
+      }); */
+      const rs = await Product.findAll({
+        where: sequelize.getWhere(query, '2'),
+        attributes: [
+          'id',
+          'title',
+          'priceOrigin',
+          'priceSale',
+          'amount',
+          'status',
+          'summary',
+          'readCounter',
+        ],
+        include: [
+          {
+            model: Cate,
+            through: { attributes: [] },
+            attributes: [['id', 'cid']],
+            where: { id: { [Op.or]: [...lastTree] } },
+            order: [[field, sort]],
+          },
+          {
+            model: ProductFile,
+            attributes: ['id', 'saveName', 'fileType', 'fieldNum'],
+            order: [
+              [ProductFile, 'fileType', 'ASC'],
+              [ProductFile, 'fieldNum', 'ASC'],
             ],
           },
         ],
