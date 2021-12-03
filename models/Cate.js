@@ -64,10 +64,22 @@ module.exports = (sequelize, { DataTypes, Op }) => {
       const lastTree = findLastId(myTree, []);
       const rs = await this.findAll({
         where: { id: { [Op.or]: [...lastTree] } },
+        attributes: ['id'],
         include: [
           {
             model: Product,
-            where: sequelize.getWhere(query),
+            through: { attributes: [] },
+            attributes: [
+              'id',
+              'title',
+              'priceOrigin',
+              'priceSale',
+              'amount',
+              'status',
+              'summary',
+              'readCounter',
+            ],
+            where: sequelize.getWhere(query, '2'),
             order: [[field, sort]],
             include: [
               {
