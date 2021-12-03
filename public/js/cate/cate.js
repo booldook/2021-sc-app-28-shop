@@ -55,7 +55,7 @@ function onDeleteTree(e, data) {
 
 function onUpdateTree() {
   axios
-    .put('/api/tree', { node: $('#jstreeWrap').jstree(true).get_json('#') })
+    .put('/api/tree', { node: $('#jstreeWrap').jstree().get_json('#') })
     .then(function (r) {
       $('#jstreeWrap').jstree().refresh();
     })

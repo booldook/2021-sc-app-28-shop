@@ -22,8 +22,8 @@ core.data = {
 
 $('#jstreeWrap')
   .jstree({ core: core, plugins: plugins })
-  .on('changed.jstree', onChangeTree)
-  .on('loaded.jstree', onLoadedTree);
+  .on('loaded.jstree', onLoadedTree)
+  .on('changed.jstree', onChangeTree);
 
 function onLoadedTree(e, data) {
   allData = data.instance._model.data;
