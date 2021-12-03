@@ -27,6 +27,10 @@ $('#jstreeWrap')
 
 function onLoadedTree(e, data) {
   allData = data.instance._model.data;
+  console.log(Object.entries(allData));
+  Object.entries(allData).forEach(function (v) {
+    v[1].state.selected = false;
+  });
   $('#jstreeWrap').jstree('check_node', cateArr);
   onCloseModal();
 }
