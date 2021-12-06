@@ -12,8 +12,8 @@ module.exports = {
     for (let i = 1; i <= 1000; i++) {
       for (let j = 1; j <= 5; j++) {
         let saveName = imgs[Math.floor(Math.random() * imgs.length)];
-        if (Math.floor(Math.random() * 10) === 1 && j == 2) saveName = videos[0];
-        if (Math.floor(Math.random() * 10) === 2 && j == 2) saveName = videos[1];
+        if (Math.floor(Math.random() * 5) === 1 && j == 2) saveName = videos[0];
+        if (Math.floor(Math.random() * 5) === 2 && j == 2) saveName = videos[1];
         insertFile.push({
           prd_id: i,
           oriName: `상품이미지_${i}_${j}.jpg`,
