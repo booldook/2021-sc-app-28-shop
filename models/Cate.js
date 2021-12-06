@@ -96,6 +96,8 @@ module.exports = (sequelize, { DataTypes, Op }) => {
       }); */
       const rs = await Product.findAll({
         where: sequelize.getWhere(query, '2'),
+        offset: 0,
+        limit: 16,
         attributes: [
           'id',
           'title',
