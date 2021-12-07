@@ -27,7 +27,8 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
-    res.send('...');
+    await Color.update(req.body, { where: { id: req.body.id } });
+    res.redirect('/admin/color');
   } catch (err) {
     next(createError(err));
   }

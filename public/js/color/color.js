@@ -4,9 +4,10 @@ function onColorChange(el) {
 
 function onColorReset(el) {
   var color = $(el.form.defaultColor).val();
+  var name = $(el.form.defaultName).val();
   changeColor(color, el);
   $(el.form.code).val(color);
-  $(el.form.name).val('');
+  $(el.form.name).val(name);
 }
 
 function changeColor(color, el) {

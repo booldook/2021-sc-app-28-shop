@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="/css/admin-color.css">
 <section class="color-wrapper list-wrapper wrapper">
   <ul>
-    <%- include('./color-form.ejs', { color: '#333333', method: 'POST', id: '' }) %>
+    <%- include('./color-form.ejs', { color: '#333333', method: 'POST', id: '', name: '' }) %>
     <% 
       for(let v of list) { 
-        let value = { color: v.code, method: 'PUT', id: v.id }
+        let value = { color: v.code, method: 'PUT', id: v.id, name: v.name }
     %>
       <%- include('./color-form.ejs', value) %>
     <% } %>
