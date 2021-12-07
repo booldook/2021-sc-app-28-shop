@@ -10,6 +10,11 @@ function onColorReset(el) {
   $(el.form.name).val(name);
 }
 
+function onTxtChange(el) {
+  var txt = el.value;
+  $(el.form).find('.tag').text(txt);
+}
+
 function changeColor(color, el) {
   var hslColor = hexToHSL(color);
   var txtColor = hslColor.l > 0.5 ? '#000000' : '#ffffff';
