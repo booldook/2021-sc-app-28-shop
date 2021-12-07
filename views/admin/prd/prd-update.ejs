@@ -30,7 +30,7 @@
           <td class="content section-wrap">
             <% for(let v of sections) { %>
             <label>
-              <input type="checkbox" name="section" value="<%= v.id %>" <%= v.checked ? 'checked' : '' %>>
+              <input type="checkbox" name="section[]" value="<%= v.id %>" <%= v.checked ? 'checked' : '' %>>
               <div class="box" style="<%= v.style %>"><%= v.name %></div>
             </label>
             <% } %>
@@ -89,7 +89,7 @@
           <td class="content color-wrap">
             <% for(let v of colors) { %>
             <label>
-              <input type="checkbox" name="color" value="<%= v.id %>" <%= v.checked ? 'checked' : '' %>>
+              <input type="checkbox" name="color[]" value="<%= v.id %>" <%= v.checked ? 'checked' : '' %>>
               <div class="circle" style="<%= v.style %>"></div>
             </label>
             <% } %>
