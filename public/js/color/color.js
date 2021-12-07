@@ -26,6 +26,14 @@ function onSubmit(el) {
   f.submit();
 }
 
+function onColorDelete(el) {
+  var f = el.form;
+  if (confirm('삭제하시겠습니까?')) {
+    f._method.value = 'DELETE';
+    f.submit();
+  }
+}
+
 $(document).ready(function () {
   $('.bt-reset').trigger('click');
 });

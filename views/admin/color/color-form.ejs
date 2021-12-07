@@ -1,8 +1,9 @@
 <li class="list">
-  <form action="/<%= currents[0] %>/<%= currents[1] %>" method="<%= method %>">
+  <form action="/<%= currents[0] %>/<%= currents[1] %>" method="POST">
     <input type="hidden" name="defaultColor" value="<%= color %>">
     <input type="hidden" name="defaultName" value="<%= name %>">
     <% if(id && id !== '') { %>
+      <input type="hidden" name="_method" value="<%= method %>">
       <input type="hidden" name="id" value="<%= id %>">
     <% } %>
     <div class="color-wrap">
@@ -18,7 +19,7 @@
         <%= id === '' ? '등록' : '수정' %>
       </button>
       <% if(id !== '') { %>
-        <button type="button" class="btn btn-sm btn-secondary">삭제</button>
+        <button type="button" class="btn btn-sm btn-secondary" onclick="onColorDelete(this);">삭제</button>
       <% } %>
       <button type="button" class="btn btn-sm btn-secondary bt-reset" onclick="onColorReset(this);">리셋</button>
     </div>
