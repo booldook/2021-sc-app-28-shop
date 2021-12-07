@@ -63,9 +63,23 @@ router.get('/:id', queries(), async (req, res, next) => {
       Section,
     });
     const cate = prd.Cates.map((v) => v.id);
-    const colors = Color.findAll({ order: [['name', 'asc']] });
-    const sections = Section.findAll({ order: [['name', 'asc']] });
-    // res.json({ prd, cate });
+    const color = await Color.findAll({ order: [['name', 'asc']] });
+    const section = await Section.findAll({ order: [['name', 'asc']] });
+    const colors = color
+      .map((v) => v.toJSON())
+      .map((v) => {
+        v.checked = _.find(prd.Colors, ['id', v.id]) ? true : false;
+        v.style = `background-color: ${v.code};`;
+        return v;
+      });
+    const sections = section
+      .map((v) => v.toJSON())
+      .map((v) => {
+        v.checked = _.find(prd.Sections, ['id', v.id]) ? true : false;
+        v.txtColor = convert.hex.hsl(v.color)[2] > 50 ? '#000000' : '#ffffff';
+        v.style = `background-color: ${v.color}; color: ${v.txtColor};`;
+        return v;
+      });
     res.render('admin/prd/prd-update', { prd, cate, _, colors, sections });
   } catch (err) {
     next(createError(err));
