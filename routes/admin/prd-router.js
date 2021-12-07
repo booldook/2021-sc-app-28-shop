@@ -154,14 +154,6 @@ router.post(
   }
 );
 
-router.put('/', async (req, res, next) => {
-  try {
-    res.redirect('/admin/prd');
-  } catch (err) {
-    next(createError(err));
-  }
-});
-
 router.put('/status', queries('body'), async (req, res, next) => {
   try {
     const { status, id } = req.body;
@@ -182,6 +174,9 @@ router.delete('/', isAdmin(8), queries('body'), async (req, res, next) => {
     });
     for (let { saveName } of files) await moveFile(saveName);
     await ProductFile.destroy({ where: { prd_id: id } });
+    await CateProduct.destroy({ where: { prd_id: id } });
+    await SectionProduct.destroy({ where: { prd_id: id } });
+    await ColorProduct.destroy({ where: { prd_id: id } });
     res.redirect(res.locals.goList);
   } catch (err) {
     next(createError(err));
