@@ -2,7 +2,7 @@
 
 .color-wrapper {
   > ul {
-    @include flex($v: stretch);
+    @include flex($v: stretch, $w: wrap);
     .list {
       border: 1px solid #ccc;
       padding: 1em;
