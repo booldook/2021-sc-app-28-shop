@@ -1,0 +1,29 @@
+@import '../common';
+
+.color-wrapper {
+  > ul {
+    @include flex($v: stretch);
+    .list {
+      width: 24%;
+      border: 2px solid red;
+      margin-right: 1%;
+      padding: 1em;
+      form {
+        @include flex($v: center, $h: center);
+        @include flexCol;
+        .color-wrap {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin: 1em 0;
+          background-color: green;
+        }
+        .input-wrap {
+          input[name='name'] {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<%- include('../../inc/head.ejs') %>
+<%- include('../../inc/header.ejs') %>
+<link rel="stylesheet" href="/css/admin-color.css">
+<section class="color-wrapper list-wrapper wrapper">
+  <ul>
+    <li class="list">
+      <form action="/<%= currents[0] %>/<%= currents[1] %>" method="POST">
+        <div class="color-wrap"></div>
+        <div class="input-wrap">
+          <input type="text" name="name" class="form-control">
+          <input type="color" name="code">
+        </div>
+        <div class="btn-wrap">
+          <button class="btn btn-dark">수정</button>
+          <button class="btn btn-secondary">삭제</button>
+        </div>
+      </form>
+    </li>
+  </ul>
+</section>
+<%- include('../../inc/foot.ejs') %>
