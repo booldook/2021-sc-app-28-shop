@@ -20,6 +20,19 @@
         </tr>
         <tr>
           <td class="title" style="width: 15%;">
+            분류 등록
+          </td>
+          <td class="content">
+            <% for(let v of sections) { %>
+            <label class="mr-3">
+              <input type="checkbox" name="section" value="<%= v.id %>">
+              <div class="section-box"><%= v.name %></div>
+            </label>
+            <% } %>
+          </td>
+        </tr>
+        <tr>
+          <td class="title" style="width: 15%;">
             상품명
             <span class="red">*</span>
           </td>

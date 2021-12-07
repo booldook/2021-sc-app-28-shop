@@ -5,7 +5,14 @@ const { escape, unescape } = require('html-escaper');
 const createError = require('http-errors');
 const { error } = require('../../modules/util');
 const _ = require('lodash');
-const { Product, ProductFile, CateProduct, Cate } = require('../../models');
+const {
+  Product,
+  ProductFile,
+  CateProduct,
+  Cate,
+  Color,
+  Section,
+} = require('../../models');
 const uploader = require('../../middlewares/multer-mw');
 const afterUploader = require('../../middlewares/after-multer-mw');
 const sharpInit = require('../../middlewares/sharp-mw');
@@ -13,9 +20,12 @@ const { moveFile } = require('../../modules/util');
 const queries = require('../../middlewares/query-mw');
 const { isAdmin } = require('../../middlewares/auth-mw');
 
-router.get('/', queries(), (req, res, next) => {
+router.get('/', queries(), async (req, res, next) => {
   if (req.query.type === 'create') {
-    res.render('admin/prd/prd-form');
+    const colors = await Color.findAll({ order: [['name', 'asc']] });
+    const sections = await Section.findAll({ order: [['name', 'asc']] });
+    // res.json({ colors, sections });
+    res.render('admin/prd/prd-form', { colors, sections });
   } else next();
 });
 
@@ -34,9 +44,17 @@ router.get('/', queries(), async (req, res, next) => {
 
 router.get('/:id', queries(), async (req, res, next) => {
   try {
-    const prd = await Product.findProduct(req.params.id, Cate, ProductFile);
+    const prd = await Product.findProduct(req.params.id, {
+      Cate,
+      ProductFile,
+      Color,
+      Section,
+    });
     const cate = prd.Cates.map((v) => v.id);
-    res.render('admin/prd/prd-update', { prd, cate, _ });
+    const colors = Color.findAll({ order: [['name', 'asc']] });
+    const sections = Section.findAll({ order: [['name', 'asc']] });
+    // res.json({ prd, cate });
+    res.render('admin/prd/prd-update', { prd, cate, _, colors, sections });
   } catch (err) {
     next(createError(err));
   }
