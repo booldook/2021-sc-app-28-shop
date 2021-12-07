@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
       order: [['id', 'desc']],
     });
     const lists = list.map((v) => {
-      v.txtColor = convert.hex.hsl(v.color);
+      v.txtColor = convert.hex.hsl(v.color)[2] > 50 ? '#000000' : '#ffffff';
       return v;
     });
     res.render('admin/section/section-list.ejs', { lists });
