@@ -13,6 +13,8 @@ const {
   Cate,
   Color,
   Section,
+  ColorProduct,
+  SectionProduct,
 } = require('../../models');
 const uploader = require('../../middlewares/multer-mw');
 const afterUploader = require('../../middlewares/after-multer-mw');
@@ -117,6 +119,18 @@ router.post(
           prd_id: product.id,
         }));
         if (req.body.cate !== '') await CateProduct.bulkCreate(catePrd);
+
+        const sectionPrd = req.body.section.map((id) => ({
+          section_id: id,
+          prd_id: product.id,
+        }));
+        if (req.body.section.length) await SectionProduct.bulkCreate(sectionPrd);
+
+        const colorPrd = req.body.color.map((id) => ({
+          color_id: id,
+          prd_id: product.id,
+        }));
+        if (req.body.color.length) await ColorProduct.bulkCreate(colorPrd);
         res.redirect('/admin/prd');
       }
     } catch (err) {
