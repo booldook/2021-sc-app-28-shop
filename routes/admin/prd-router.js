@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { escape, unescape } = require('html-escaper');
 const createError = require('http-errors');
+const convert = require('color-convert');
 const { error } = require('../../modules/util');
 const _ = require('lodash');
 const {
@@ -22,8 +23,17 @@ const { isAdmin } = require('../../middlewares/auth-mw');
 
 router.get('/', queries(), async (req, res, next) => {
   if (req.query.type === 'create') {
-    const colors = await Color.findAll({ order: [['name', 'asc']] });
-    const sections = await Section.findAll({ order: [['name', 'asc']] });
+    const color = await Color.findAll({ order: [['name', 'asc']] });
+    const colors = color.map((v) => {
+      v.style = `background-color: ${v.code};`;
+      return v;
+    });
+    const section = await Section.findAll({ order: [['name', 'asc']] });
+    const sections = section.map((v) => {
+      v.txtColor = convert.hex.hsl(v.color)[2] > 50 ? '#000000' : '#ffffff';
+      v.style = `background-color: ${v.color}; color: ${v.txtColor};`;
+      return v;
+    });
     // res.json({ colors, sections });
     res.render('admin/prd/prd-form', { colors, sections });
   } else next();
