@@ -37,17 +37,28 @@ module.exports = {
         }
       }
     }
+    for (let i = 1; i <= 3; i++) {
+      insertFile.push({
+        board_id: 241,
+        oriName: '메인배너' + i + '.jpg',
+        saveName: '../storages/201209/201209_main' + i + '.jpg',
+        mimeType: 'image/jpg',
+        fileType: 'I',
+        size: 12369,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    }
     insertFile.push({
-      board_id: 241,
-      oriName: '메인배너1.jpg',
-      saveName: ,
+      board_id: 242,
+      oriName: '패럴렉스배너.jpg',
+      saveName: '../storages/201209/201209_parallax.jpg',
       mimeType: 'image/jpg',
       fileType: 'I',
       size: 12369,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    
     await queryInterface.bulkInsert('boardfile', insertFile);
   },
 
