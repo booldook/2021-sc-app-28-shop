@@ -147,10 +147,12 @@ module.exports = (sequelize, { DataTypes, Op }) => {
           {
             model: Color,
             through: { attributes: [] },
+            attributes: ['id', 'name', 'code'],
           },
           {
             model: Section,
             through: { attributes: [] },
+            attributes: ['id', 'name', 'color'],
           },
           {
             model: ProductFile,
