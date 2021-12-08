@@ -48,7 +48,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
         allowNull: true,
       },
       star: {
-        type: DataTypes.DECIMAL(1, 1),
+        type: DataTypes.DECIMAL(2, 1),
         allowNull: true,
       },
       readCounter: {
