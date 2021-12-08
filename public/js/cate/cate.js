@@ -61,7 +61,7 @@ function onUpdateTree() {
 
 function onChangeTree(e, data) {
   // DB 교체
-  console.log(data);
+  data.node.state.selected = false;
   axios
     .put('/api/tree/' + data.node.id, { data: data.node })
     .then(onUpdateTree)
@@ -70,19 +70,9 @@ function onChangeTree(e, data) {
     });
 }
 
-function onRenameTree(e, data) {
-  data.node.state.selected = false;
-  onChangeTree(e, data);
-}
-
-function onMoveTree(e, data) {
-  data.node.state.selected = false;
-  onChangeTree(e, data);
-}
-
 $('#jstreeWrap')
   .jstree({ core: core, plugins: plugins, types })
   .on('create_node.jstree', onCreateTree)
-  .on('rename_node.jstree', onRenameTree)
-  .on('move_node.jstree', onMoveTree)
+  .on('rename_node.jstree', onChangeTree)
+  .on('move_node.jstree', onChangeTree)
   .on('delete_node.jstree', onDeleteTree);

@@ -34,7 +34,6 @@ router.put('/', isAdmin(7), async (req, res, next) => {
 // JSON 바꾸기
 router.put('/:id', isAdmin(7), async (req, res, next) => {
   try {
-    console.log(req.params, req.body);
     const id = req.params.id;
     const { parents, text } = req.body.data;
     parents.pop();
