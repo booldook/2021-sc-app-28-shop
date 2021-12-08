@@ -106,13 +106,20 @@ module.exports = (sequelize, { DataTypes, Op }) => {
     });
   };
 
-  Product.findProducts = async function (query, Cate, ProductFile) {
+  Product.findProducts = async function (
+    query,
+    { Cate, Color, Section, ProductFile }
+  ) {
     try {
       let { field, sort, page = 1, search, grp, cid = 'j1_1' } = query;
       // tree
       const [allTree] = await Cate.getAllCate();
       const myTree = findObj(allTree, cid);
       const lastTree = findLastId(myTree, []);
+      console.log('==============');
+      // Location 만들기
+      console.log(myTree, lastTree);
+      console.log('==============');
       // pager
       let listCnt = 15;
       let pagerCnt = 5;
@@ -142,6 +149,14 @@ module.exports = (sequelize, { DataTypes, Op }) => {
             order: [[field, sort]],
           },
           {
+            model: Color,
+            through: { attributes: [] },
+          },
+          {
+            model: Section,
+            through: { attributes: [] },
+          },
+          {
             model: ProductFile,
             attributes: ['id', 'saveName', 'fileType', 'fieldNum'],
             order: [
@@ -151,6 +166,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
           },
         ],
       });
+      console.log(rs);
       return rs;
     } catch (err) {
       console.log(err);
