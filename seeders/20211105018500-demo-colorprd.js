@@ -9,7 +9,7 @@ module.exports = {
     const colors = rs.map((v) => v.id);
     for (let i = 1; i <= 1000; i++) {
       let color = _.shuffle(colors);
-      let len = Math.floor(Math.random() * cates.length);
+      let len = Math.floor(Math.random() * color.length);
       for (let j = 0; j < len; j++) {
         insertColorPrd.push({
           prd_id: i,
