@@ -37,6 +37,17 @@ module.exports = {
         }
       }
     }
+    insertFile.push({
+      board_id: 241,
+      oriName: '메인배너1.jpg',
+      saveName: ,
+      mimeType: 'image/jpg',
+      fileType: 'I',
+      size: 12369,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    
     await queryInterface.bulkInsert('boardfile', insertFile);
   },
 
