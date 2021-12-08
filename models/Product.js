@@ -115,11 +115,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
       // tree
       const [allTree] = await Cate.getAllCate();
       const myTree = findObj(allTree, cid);
-      const lastTree = findLastId(myTree, []);
-      console.log('==============');
-      // Location 만들기
-      console.log(myTree, lastTree);
-      console.log('==============');
+      const endTree = findLastId(myTree, []);
       // pager
       let listCnt = 15;
       let pagerCnt = 5;
@@ -145,7 +141,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
             model: Cate,
             through: { attributes: [] },
             attributes: [['id', 'cid']],
-            where: { id: { [Op.or]: [...lastTree] } },
+            where: { id: { [Op.or]: [...endTree] } },
             order: [[field, sort]],
           },
           {
@@ -166,7 +162,6 @@ module.exports = (sequelize, { DataTypes, Op }) => {
           },
         ],
       });
-      console.log(rs);
       return rs;
     } catch (err) {
       console.log(err);
