@@ -1,28 +1,10 @@
--- --------------------------------------------------------
--- 호스트:                          localhost
--- 서버 버전:                        8.0.26 - MySQL Community Server - GPL
--- 서버 OS:                        Win64
--- HeidiSQL 버전:                  11.3.0.6295
--- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
--- 테이블 데이터 shop.boardinit:~5 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `boardinit` DISABLE KEYS */;
 INSERT INTO `boardinit` (`id`, `title`, `boardType`, `useImg`, `useFile`, `useComment`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 	(1, '공지사항', 'default', '3', '2', 0, '2021-11-16 11:52:52', '2021-11-16 11:52:52', NULL),
 	(2, '사용후기', 'gallery', '5', '1', 1, '2021-11-16 11:52:52', '2021-11-16 11:52:52', NULL),
 	(4, '관계사링크', 'gallery', '1', '0', 0, '2021-11-24 10:01:53', '2021-12-01 16:24:44', NULL),
 	(5, '메인배너관리', 'gallery', '3', '0', 0, '2021-12-01 16:25:43', '2021-12-01 16:25:43', NULL);
-/*!40000 ALTER TABLE `boardinit` ENABLE KEYS */;
 
--- 테이블 데이터 shop.cate:~19 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `cate` DISABLE KEYS */;
 INSERT INTO `cate` (`id`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 	('j1_1', '2021-12-06 11:21:45', '2021-12-06 11:21:45', NULL),
 	('j1_13', '2021-12-06 11:21:45', '2021-12-06 11:21:45', NULL),
@@ -43,10 +25,7 @@ INSERT INTO `cate` (`id`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 	('j1_3', '2021-12-06 11:21:45', '2021-12-06 11:21:45', NULL),
 	('j1_4', '2021-12-06 11:21:45', '2021-12-06 11:21:45', NULL),
 	('j1_6', '2021-12-06 11:21:45', '2021-12-06 11:21:45', NULL);
-/*!40000 ALTER TABLE `cate` ENABLE KEYS */;
 
--- 테이블 데이터 shop.color:~0 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `color` DISABLE KEYS */;
 INSERT INTO `color` (`id`, `name`, `code`, `createdAt`, `updatedAt`) VALUES
 	(2, 'Light Grey', '#808080', '2021-12-07 11:25:08', '2021-12-08 09:36:00'),
 	(3, 'Indigo Blue', '#064384', '2021-12-07 11:31:47', '2021-12-08 09:35:45'),
@@ -60,18 +39,10 @@ INSERT INTO `color` (`id`, `name`, `code`, `createdAt`, `updatedAt`) VALUES
 	(11, 'Red', '#dc0909', '2021-12-08 09:37:30', '2021-12-08 09:37:30'),
 	(12, 'Blue', '#003ac2', '2021-12-08 09:37:43', '2021-12-08 09:37:43'),
 	(13, 'Green', '#1ba300', '2021-12-08 09:37:54', '2021-12-08 09:37:54');
-/*!40000 ALTER TABLE `color` ENABLE KEYS */;
 
--- 테이블 데이터 shop.section:~0 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `section` DISABLE KEYS */;
 INSERT INTO `section` (`id`, `name`, `color`, `createdAt`, `updatedAt`) VALUES
 	(2, 'Sale', '#ff66c7', '2021-12-07 13:19:04', '2021-12-08 09:34:10'),
 	(3, 'Best', '#2dfb3b', '2021-12-07 13:20:01', '2021-12-08 09:33:54'),
 	(4, 'New', '#5a6f0b', '2021-12-07 14:37:55', '2021-12-08 09:33:42'),
 	(5, 'Bundle', '#044271', '2021-12-08 09:34:40', '2021-12-08 09:34:40');
-/*!40000 ALTER TABLE `section` ENABLE KEYS */;
 
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
