@@ -111,7 +111,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
     { Cate, Color, Section, ProductFile }
   ) {
     try {
-      let { field, sort, page = 1, search, grp, cid = 'j1_1' } = query;
+      let { field, sort, page = 1, search, section, cid = 'j1_1' } = query;
       // tree
       const [allTree] = await Cate.getAllCate();
       const myTree = findObj(allTree, cid);
