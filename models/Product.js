@@ -132,6 +132,7 @@ module.exports = (sequelize, { DataTypes, Op }) => {
           'priceOrigin',
           'priceSale',
           'amount',
+          'star',
           'status',
           'summary',
           'readCounter',
