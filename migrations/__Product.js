@@ -122,45 +122,52 @@ module.exports = (sequelize, { DataTypes, Op }) => {
       const totalRecord = await this.getCount(query);
       const pager = createPager(page, totalRecord, listCnt, pagerCnt);
 
-      const rs = await Product.findAll({
-        where: sequelize.getWhere(query, '2'),
-        offset: pager.startIdx,
-        limit: pager.listCnt,
-        attributes: [
-          'id',
-          'title',
-          'priceOrigin',
-          'priceSale',
-          'amount',
-          'star',
-          'status',
-          'summary',
-          'readCounter',
-        ],
+      const rs = await Section.findAll({
+        // where: sequelize.getWhere(query, '2'),
+        where: { name: 'New' },
+        // offset: pager.startIdx,
+        // limit: pager.listCnt,
         include: [
           {
-            model: Cate,
-            through: { attributes: [] },
-            attributes: ['id', 'name', 'parents'],
-            where: { id: { [Op.or]: [...endTree] } },
-            order: [[field, sort]],
-          },
-          {
-            model: Color,
-            through: { attributes: [] },
-            attributes: ['id', 'name', 'code'],
-          },
-          {
-            model: Section,
-            through: { attributes: [] },
-            attributes: ['id', 'name', 'color'],
-          },
-          {
-            model: ProductFile,
-            attributes: ['id', 'saveName', 'fileType', 'fieldNum'],
-            order: [
-              [ProductFile, 'fileType', 'ASC'],
-              [ProductFile, 'fieldNum', 'ASC'],
+            model: Product,
+            where: sequelize.getWhere(query, '2'),
+            attributes: [
+              'id',
+              'title',
+              'priceOrigin',
+              'priceSale',
+              'amount',
+              'star',
+              'status',
+              'summary',
+              'readCounter',
+            ],
+            include: [
+              {
+                model: Cate,
+                through: { attributes: [] },
+                attributes: ['id', 'name', 'parents'],
+                where: { id: { [Op.or]: [...endTree] } },
+                order: [[field, sort]],
+              },
+              {
+                model: Color,
+                through: { attributes: [] },
+                attributes: ['id', 'name', 'code'],
+              },
+              {
+                model: Section,
+                through: { attributes: [] },
+                attributes: ['id', 'name', 'color'],
+              },
+              {
+                model: ProductFile,
+                attributes: ['id', 'saveName', 'fileType', 'fieldNum'],
+                order: [
+                  [ProductFile, 'fileType', 'ASC'],
+                  [ProductFile, 'fieldNum', 'ASC'],
+                ],
+              },
             ],
           },
         ],
