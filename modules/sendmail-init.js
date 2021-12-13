@@ -3,14 +3,14 @@ const nodemailer = require('nodemailer');
 module.exports = async (email) => {
   try {
     const transporter = nodemailer.createTransport({
-      // MAIL_HOST=smtp.kakao.com
-      // MAIL_PORT=465
-      // MAIL_USER=booldook@kakao.com
+      // MAIL_HOST=smtp.naver.com
+      // MAIL_PORT=587
+      // MAIL_USER=booldook@naver.com
       // MAIL_PASS=
-      service: 'Kakao',
+      service: 'Naver',
       host: process.env.MAIL_HOST,
       port: Number(process.env.MAIL_PORT),
-      secure: true,
+      // secure: true,
       // requireTLS: true,
       auth: {
         user: process.env.MAIL_USER,
