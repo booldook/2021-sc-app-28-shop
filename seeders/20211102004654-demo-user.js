@@ -6,7 +6,7 @@ module.exports = {
     const insertUsers = [];
     insertUsers.push({
       userid: 'booldook',
-      userpw: await bcrypt.hash('111111' + salt, Number(round)),
+      userpw: await bcrypt.hash('112233' + salt, Number(round)),
       username: '최고관리자',
       email: 'booldook@gmail.com',
       tel: '010-3333-8888',
@@ -34,10 +34,10 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    for (let i = 0; i < 99; i++) {
+    for (let i = 0; i < 45; i++) {
       insertUsers.push({
         userid: 'test' + i,
-        userpw: await bcrypt.hash('111111' + salt, Number(round)),
+        userpw: await bcrypt.hash('222222' + salt, Number(round)),
         username: '테스트유저' + i,
         email: 'test' + i + '@test.com',
         tel: `010-7777-${numeral(i).format('0000')}`,

@@ -19,6 +19,24 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
+    insertBinit.push({
+      title: '관계사 링크',
+      boardType: 'gallery',
+      useImg: '1',
+      useFile: '0',
+      useComment: '0',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    insertBinit.push({
+      title: '메인배너관리',
+      boardType: 'gallery',
+      useImg: '10',
+      useFile: '0',
+      useComment: '0',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
 
     await queryInterface.bulkInsert('boardinit', insertBinit);
   },
