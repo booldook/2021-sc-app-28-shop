@@ -5,15 +5,16 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const insertCate = [];
     const [jsonFile] = fs.readJsonSync(path.join(__dirname, '../json/tree.json'));
-    const cateIds = findAllId(jsonFile, []);
-    for (let v of cateIds) {
+    console.log(jsonFile);
+    /* for (let v of cateIds) {
       insertCate.push({
         id: v,
+        name: 
         createdAt: new Date(),
         updatedAt: new Date(),
       });
-    }
-    await queryInterface.bulkInsert('cate', insertCate);
+    } */
+    // await queryInterface.bulkInsert('cate', insertCate);
   },
 
   down: async (queryInterface, Sequelize) => {
