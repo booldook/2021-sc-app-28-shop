@@ -5,7 +5,7 @@ module.exports = {
     const { data: posts } = await axios.get(
       'https://jsonplaceholder.typicode.com/posts'
     );
-    for (let i = 0, j = 0; i < 1000; i++, j++) {
+    for (let i = 0, j = 0; i < 100; i++, j++) {
       if (j === 100) j = 0;
       if (j % 3 === 0) {
         posts[j].body = '&lt;h2&gt;' + posts[j].body + '&lt;/h2&gt;';
@@ -19,6 +19,7 @@ module.exports = {
         priceSale: priceSale,
         summary: posts[j].title,
         content: posts[j].body,
+        star: (Math.random() * 3 + 2).toFixed(1),
         amount: j % 20 === 0 ? 0 : Math.floor(Math.random() * 1000),
         createdAt: new Date(),
         updatedAt: new Date(),

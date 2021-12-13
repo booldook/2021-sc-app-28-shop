@@ -9,7 +9,7 @@ module.exports = {
     videos.splice(imgs.indexOf('thumb'), 1);
     details.splice(details.indexOf('thumb'), 1);
     const insertFile = [];
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 100; i++) {
       for (let j = 1; j <= 5; j++) {
         let saveName = imgs[Math.floor(Math.random() * imgs.length)];
         if (Math.floor(Math.random() * 5) === 1 && j == 2) saveName = videos[0];
