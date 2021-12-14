@@ -61,8 +61,8 @@ module.exports = {
     });
     insertFile.push({
       board_id: 243,
-      oriName: '하단배너.jpg',
-      saveName: '201210_243.jpg',
+      oriName: '하단배너.png',
+      saveName: '201210_243.png',
       mimeType: 'image/jpg',
       fileType: 'I',
       size: 12369,
@@ -93,7 +93,7 @@ module.exports = {
         updatedAt: new Date(),
       });
     }
-    for (let i = 246, j = 1; i <= 10; i++, j++) {
+    for (let i = 246, j = 1; i <= 255; i++, j++) {
       insertFile.push({
         board_id: i,
         oriName: 'brand' + i + '.jpg',

@@ -6,7 +6,7 @@ module.exports = {
     const insertUsers = [];
     insertUsers.push({
       userid: 'booldook',
-      userpw: await bcrypt.hash('112233' + salt, Number(round)),
+      userpw: await bcrypt.hash('111111' + salt, Number(round)),
       username: '최고관리자',
       email: 'booldook@gmail.com',
       tel: '010-3333-8888',
